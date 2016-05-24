@@ -6,4 +6,11 @@
     <body>
         <h1>{{ title }}</h1>
     </body>
+    <script src="./socket.io/socket.io.js"></script>
+    <script>
+        var socket = io.connect();
+        socket.on('greeting', function (data) {
+            console.log(data);
+        });
+    </script>
 </html>
