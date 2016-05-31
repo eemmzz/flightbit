@@ -1,7 +1,8 @@
 var express = require('express'),
     app = express(),
     server = require('http').Server(app),
-    io = require('socket.io')(server);
+    io = require('socket.io')(server),
+    FlightSocket = require('./socket/flightSocket.js'),
 
     path = require('path'),
     logger = require('morgan'),
@@ -18,12 +19,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 
 io.on('connection', function (socket) {
-    var helloWorld = setInterval(function () {
-        socket.volatile.emit('greeting', 'Hello world!');
-    }, 2000);
+    var flightSocket = new FlightSocket(socket);
+    flightSocket.greet();
 
     socket.on('disconnect', function () {
-        clearInterval(helloWorld);
+        flightSocket.disconnect();
     });
 });
 

@@ -17,6 +17,7 @@
         "email": "emmziie@gmail.com"
     },
     "devDependencies": {
+        "debug": "^2.2.0",
         "nodemon": "^1.9.2"
     }
 }
