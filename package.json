@@ -4,6 +4,7 @@
     "private": true,
     "scripts": {
         "start": "node ./bin/www",
+        "test": "mocha --recursive",
         "nodemon": "nodemon ./bin/www localhost 3000"
     },
     "dependencies": {
@@ -18,6 +19,8 @@
     },
     "devDependencies": {
         "debug": "^2.2.0",
-        "nodemon": "^1.9.2"
+        "mocha": "^2.5.3",
+        "nodemon": "^1.9.2",
+        "sinon": "^1.17.4"
     }
 }

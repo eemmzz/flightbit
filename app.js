@@ -20,7 +20,7 @@ app.use('/', index);
 
 io.on('connection', function (socket) {
     var flightSocket = new FlightSocket(socket);
-    flightSocket.greet();
+    flightSocket.startGreeting();
 
     socket.on('disconnect', function () {
         flightSocket.disconnect();
