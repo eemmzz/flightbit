@@ -4,14 +4,14 @@
     "private": true,
     "scripts": {
         "start": "node ./bin/www",
-        "test": "mocha --recursive",
         "nodemon": "nodemon ./bin/www localhost 3000"
     },
     "dependencies": {
-        "express": "~4.13.1",
-        "hbs": "^4.0.0",
-        "morgan": "~1.6.1",
-        "socket.io": "^1.4.6"
+        "config": "^1.25.1",
+        "express": "^4.15.2",
+        "hbs": "^4.0.1",
+        "request": "^2.81.0",
+        "socket-io": "^1.0.0"
     },
     "author": {
         "name": "eemmzz",
@@ -19,8 +19,6 @@
     },
     "devDependencies": {
         "debug": "^2.2.0",
-        "mocha": "^2.5.3",
-        "nodemon": "^1.9.2",
-        "sinon": "^1.17.4"
+        "nodemon": "^1.9.2"
     }
 }
