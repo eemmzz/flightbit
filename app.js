@@ -1,12 +1,12 @@
-var express = require('express'),
-    app = express(),
-    server = require('http').Server(app),
-    io = require('socket.io')(server),
-    FlightSocket = require('./socket/flightSocket.js'),
+const express = require('express');
+const app = express();
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
+const FlightSocket = require('./socket/flightSocket.js');
 
-    path = require('path'),
-    logger = require('morgan'),
-    index = require('./routes/index');
+const path = require('path');
+const logger = require('morgan');
+const index = require('./routes/index');
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('views', path.join(__dirname, 'views'));
@@ -16,9 +16,9 @@ app.engine('html', require('hbs').__express);
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
+app.get('/', index);
 
-io.on('connection', function (socket) {
+io.on('connection', (socket) => {
     var flightSocket = new FlightSocket(socket);
     flightSocket.startGreeting();
 
@@ -28,25 +28,25 @@ io.on('connection', function (socket) {
 });
 
 // Catch 404s and pass onto error handler
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
 
 if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
+    app.use((err, req, res, next) => {
         res.status(err.status || 500);
         res.render('error', {
-              message: err.message,
-              error: err
+            message: err.message,
+            error: err
         });
     });
 }
 
-app.use(function(err, req, res, next) {
+app.use((err, req, res, next) => {
     res.status(err.status || 500);
-        res.render('error', {
+    res.render('error', {
         message: err.message,
         error: {}
     });

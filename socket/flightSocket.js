@@ -1,4 +1,4 @@
-var FlightSocket = function (socket) {
+let FlightSocket = function (socket) {
     this.socket = socket;
     this.greetingTimeout;
 };
