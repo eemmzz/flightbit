@@ -1,12 +1,13 @@
 const express = require('express');
 const app = express();
 const server = require('http').Server(app);
-const io = require('socket.io')(server);
-const FlightSocket = require('./lib/socket/flightSocket.js');
-
+const favicon = require('serve-favicon');
 const path = require('path');
 const logger = require('morgan');
+
 const index = require('./routes/index');
+const io = require('socket.io')(server);
+const FlightSocket = require('./lib/socket/flightSocket.js');
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('views', path.join(__dirname, 'views'));
@@ -15,6 +16,7 @@ app.engine('html', require('hbs').__express);
 
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(__dirname + '/public/images/airplane.ico'));
 
 app.get('/', index);
 
