@@ -1,4 +1,7 @@
 {
+    "caching": {
+        "ttl": 10
+    },
     "opensky": {
         "name": "opensky",
         "url": "https://opensky-network.org/api",
