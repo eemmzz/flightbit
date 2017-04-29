@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
-const FlightSocket = require('./socket/flightSocket.js');
+const FlightSocket = require('./lib/socket/flightSocket.js');
 
 const path = require('path');
 const logger = require('morgan');
