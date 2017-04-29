@@ -3,22 +3,27 @@
     "version": "0.0.1",
     "private": true,
     "scripts": {
-        "start": "node ./bin/www",
-        "nodemon": "nodemon ./bin/www localhost 3000"
-    },
-    "dependencies": {
-        "config": "^1.25.1",
-        "express": "^4.15.2",
-        "hbs": "^4.0.1",
-        "request": "^2.81.0",
-        "socket.io": "^1.7.3"
+        "start": "node --harmony-async-await ./bin/www",
+        "nodemon": "nodemon ./bin/www localhost 3000",
+        "test": "mocha --recursive "
     },
     "author": {
         "name": "eemmzz",
         "email": "emmziie@gmail.com"
     },
+    "dependencies": {
+        "config": "^1.25.1",
+        "express": "^4.15.2",
+        "hbs": "^4.0.1",
+        "lodash": "^4.17.4",
+        "request": "^2.81.0",
+        "socket.io": "^1.7.3"
+    },
     "devDependencies": {
         "debug": "^2.2.0",
-        "nodemon": "^1.9.2"
+        "mocha": "^3.3.0",
+        "nodemon": "^1.9.2",
+        "rewire": "^2.5.2",
+        "sinon": "^2.1.0"
     }
 }

@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const server = require('http').Server(app);
-const favicon = require('serve-favicon');
 const path = require('path');
 const logger = require('morgan');
 
@@ -16,7 +15,6 @@ app.engine('html', require('hbs').__express);
 
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(__dirname + '/public/images/airplane.ico'));
 
 app.get('/', index);
 
