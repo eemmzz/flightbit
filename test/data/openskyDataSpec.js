@@ -5,10 +5,10 @@ const rewire = require('rewire');
 const openskyData = rewire('../../lib/data/openskyData');
 
 describe('openskyData', () => {
-    let rewireResets = [];
-
     describe('#getCurrentFlights()', () => {
-        after(() => {
+        let rewireResets = [];
+
+        afterEach(() => {
             rewireResets.forEach((reset) => {
                 reset();
             })
@@ -86,6 +86,28 @@ describe('openskyData', () => {
             ]
             const result = await openskyData.getCurrentFlightsMap();
             
+            assert.deepEqual(result, expected);
+        });
+
+        it('Should return an empty array if an empty result occurrs', async () => {
+            const mockRequestGenerator = {
+                generateHttpGet: async () => {
+                    return await new Promise((resolve) => {
+                        resolve('[]');
+                    });
+                }
+            };
+
+            rewireResets.push(
+                openskyData.__set__(
+                    'requestGenerator',
+                   mockRequestGenerator
+                )
+            );
+
+            const expected = []
+            const result = await openskyData.getCurrentFlightsMap();
+
             assert.deepEqual(result, expected);
         });
     });
