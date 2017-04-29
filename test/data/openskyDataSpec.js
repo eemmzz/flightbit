@@ -14,7 +14,7 @@ describe('openskyData', () => {
             })
         });
 
-        it('Should return a key:value map of icao24 and callsign', async () => {
+        it('Should return a key:value map of callsign and icao24', async () => {
             const mockFlightStatesData = [
                 [ 'aa8c39', 'UAL252' ],
                 [ 'ac494e', 'N891CS' ]
