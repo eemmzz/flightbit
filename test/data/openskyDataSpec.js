@@ -14,7 +14,7 @@ describe('openskyData', () => {
             })
         });
 
-        it('Should return a key:value map of icao24 and callsign', (done) => {
+        it('Should return a key:value map of icao24 and callsign', async () => {
             const mockFlightStatesData = [
                 [ "aa8c39", "UAL252" ],
                 [ "ac494e", "N891CS" ]
@@ -24,16 +24,13 @@ describe('openskyData', () => {
                 openskyData.__set__('fetchAllCurrentFlightStates', sinon.stub().returns(mockFlightStatesData))
             );
 
-            openskyData.getCurrentFlightsMap().then((result) => {
-                const expected = [
-                    { 'UAL252': 'aa8c39' },
-                    { 'N891CS': 'ac494e' }
-                ]
-                assert.deepEqual(result, expected);
-                done();
-            }).catch((error) => {
-                done(error);
-            });
+            const expected = [
+                { 'UAL252': 'aa8c39' },
+                { 'N891CS': 'ac494e' }
+            ]
+            const result = await openskyData.getCurrentFlightsMap();
+            
+            assert.deepEqual(result, expected);
         });
     });
 });
