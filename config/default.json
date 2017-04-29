@@ -1,5 +1,6 @@
 {
     "opensky": {
-        "url": "https://opensky-network.org/api"
+        "url": "https://opensky-network.org/api",
+        "timeout": 2000
     }
 }
