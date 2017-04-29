@@ -1,18 +1,45 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Flightbit</title>
         <link rel="stylesheet" href="./stylesheets/style.css">
         <link rel="icon" type="ico" href="./images/airplane.ico">
     </head>
     <body>
         <h1>{{ title }}</h1>
-        <p>{{ data }}
+        <label class="screenreader-text" for="search">Search for flights by callsign</label>
+        <input type="text" id="search" onkeyup="searchFlights()" placeholder="Search for flight...">
+        <div id="map"></div>
+        <p class="credit-text">Plane icon made by <a href="http://www.flaticon.com/authors/pixel-buddha">Pixel Buddha</a>
+        from <a href="www.flaticon.com">FlatIcon</a></p>
     </body>
     <script src="./socket.io/socket.io.js"></script>
     <script>
-        var socket = io.connect();
-        socket.on('greeting', function (data) {
-            console.log(data);
-        });
+        function initMap() {
+            var londonPosition = { lat: 51, lng: 0.12 };
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 5,
+                center: londonPosition,
+                streetViewControl: false
+            });
+            var marker = new google.maps.Marker({
+                position: londonPosition,
+                map: map
+            });
+        }
+
+        // var socket = io.connect();
+
+        // socket.on('greeting', function (data) {
+        //     console.log(data);
+        // });
+
+        function searchFlights() {
+            console.log('test search');
+        }
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmCeMyctj_TLFrzdxO8IerXBCWT0a3kds&callback=initMap">
     </script>
 </html>
