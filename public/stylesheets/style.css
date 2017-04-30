@@ -1,15 +1,28 @@
+html {
+  height: 100%;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px Lato, Helvetica, Arial, sans-serif;
+  color: #333;
+  height: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 h1 {
-  margin-top: 0;
-  margin-bottom: 24px;
+  margin: 24px 0 24px 0;
 }
 
 a {
   color: #00B7FF;
+}
+
+.flightbit-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 15px 0 15px;
 }
 
 .screenreader-text {
@@ -26,8 +39,27 @@ a {
   text-align: center;
 }
 
+#search {
+  width: 200px;
+}
+
+#random {
+  font-family: Tahoma, Arial, sans-serif;
+  width: 180px;
+  padding: 12px 0 12px 0;
+  cursor: pointer;
+  background-color: #f1f1ee;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  color: #333;
+}
+
+#random:hover {
+  background-color: #f9f9f7;
+}
+
 #map {
-  height: 500px;
   width: 100%;
-  margin-top: 50px;
+  margin-top: 32px;
+  height: 100%;
 }

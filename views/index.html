@@ -4,14 +4,18 @@
         <title>Flightbit</title>
         <link rel="stylesheet" href="./stylesheets/style.css">
         <link rel="icon" type="ico" href="./images/airplane.ico">
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     </head>
     <body>
-        <h1>{{ title }}</h1>
-        <label class="screenreader-text" for="search">Search for flights by callsign</label>
-        <input type="text" id="search" onkeyup="searchFlights()" placeholder="Search for flight...">
-        <div id="map"></div>
-        <p class="credit-text">Plane icon made by <a href="http://www.flaticon.com/authors/pixel-buddha">Pixel Buddha</a>
-        from <a href="www.flaticon.com">FlatIcon</a></p>
+        <div class="flightbit-wrapper">
+            <h1>{{ title }}</h1>
+            <label class="screenreader-text" for="search">Search for flights by callsign</label>
+            <!--<input type="text" id="search" onkeyup="searchFlights()" placeholder="Search for flight...">-->
+            <button id="random">Show me a random flight</button>
+            <div id="map"></div>
+            <p class="credit-text">Plane icon made by <a href="http://www.flaticon.com/authors/pixel-buddha">Pixel Buddha</a>
+            from <a href="www.flaticon.com">FlatIcon</a></p>
+        </div>
     </body>
     <script src="./socket.io/socket.io.js"></script>
     <script>
