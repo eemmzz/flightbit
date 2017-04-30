@@ -5,6 +5,7 @@ const path = require('path');
 const logger = require('morgan');
 
 const index = require('./routes/index');
+const random = require('./routes/random');
 const io = require('socket.io')(server);
 const FlightSocket = require('./lib/socket/flightSocket.js');
 
@@ -17,6 +18,7 @@ app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', index);
+app.get('/random', random);
 
 io.on('connection', (socket) => {
     var flightSocket = new FlightSocket(socket);
