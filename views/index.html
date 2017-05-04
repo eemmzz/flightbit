@@ -9,8 +9,10 @@
     <body>
         <div class="flightbit-wrapper">
             <h1>{{ title }}</h1>
-            <label class="screenreader-text" for="search">Search for flights by callsign</label>
+
+            <!--<label class="screenreader-text" for="search">Search for flights by callsign</label>-->
             <!--<input type="text" id="search" onkeyup="searchFlights()" placeholder="Search for flight...">-->
+
             <button id="random">Show me a random flight</button>
             <div id="map"></div>
             <p class="credit-text">Plane icon made by <a href="http://www.flaticon.com/authors/scott-de-jonge">Scott de Jonge</a>
@@ -34,16 +36,7 @@
             });
         }
 
-        function searchFlights() {
-            console.log('test search');
-        }
-
         var socket = io.connect();
-
-        // socket.on('greeting', function (data) {
-        //     console.log(data);
-        // });
-
         var randomButtonElement = document.getElementById('random');
         randomButtonElement.addEventListener(
             'click',
@@ -66,6 +59,10 @@
             },
             false
         );
+        
+        function searchFlights() {
+            console.log('test search');
+        }
     </script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmCeMyctj_TLFrzdxO8IerXBCWT0a3kds&callback=initMap">
