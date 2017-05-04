@@ -7,7 +7,6 @@ const logger = require('morgan');
 const index = require('./routes/index');
 const random = require('./routes/random');
 const io = require('socket.io')(server);
-const FlightSocket = require('./lib/socket/flightSocket.js');
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('views', path.join(__dirname, 'views'));
@@ -21,11 +20,12 @@ app.get('/', index);
 app.get('/random', random);
 
 io.on('connection', (socket) => {
-    var flightSocket = new FlightSocket(socket);
-    flightSocket.startGreeting();
+    socket.on('set flight', (flightIcao24) => {
+        socket.icao24 = flightIcao24;
+    })
 
-    socket.on('disconnect', function () {
-        flightSocket.disconnect();
+    socket.on('disconnect', () => {
+        console.log('disconnected');
     });
 });
 

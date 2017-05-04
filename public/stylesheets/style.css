@@ -46,6 +46,7 @@ a {
 #random {
   font-family: Tahoma, Arial, sans-serif;
   width: 180px;
+  height: 56px;
   padding: 12px 0 12px 0;
   cursor: pointer;
   background-color: #f1f1ee;

@@ -27,21 +27,45 @@
                 center: londonPosition,
                 streetViewControl: false
             });
+
             var marker = new google.maps.Marker({
                 position: londonPosition,
                 map: map
             });
         }
 
-        // var socket = io.connect();
+        function searchFlights() {
+            console.log('test search');
+        }
+
+        var socket = io.connect();
 
         // socket.on('greeting', function (data) {
         //     console.log(data);
         // });
 
-        function searchFlights() {
-            console.log('test search');
-        }
+        var randomButtonElement = document.getElementById('random');
+        randomButtonElement.addEventListener(
+            'click',
+            function () {
+                var request = new XMLHttpRequest();
+ 
+                request.onreadystatechange = function () {
+                    if (request.readyState === 4) {
+                        if (request.status === 200) {
+                            var result = JSON.parse(request.responseText);
+                            var icao24 = Object.values(result)[0];
+                            socket.emit('set flight', icao24);
+                        } else {
+                            console.log('Bad things have happened');
+                        }
+                    }
+                }
+                request.open('Get', '/random');
+                request.send();
+            },
+            false
+        );
     </script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmCeMyctj_TLFrzdxO8IerXBCWT0a3kds&callback=initMap">
